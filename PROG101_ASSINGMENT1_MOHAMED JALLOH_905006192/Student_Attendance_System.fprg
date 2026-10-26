@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+<attributes>
+<attribute name="name" value="Student Attendance System"/>
+<attribute name="authors" value="Student"/>
+<attribute name="about" value="Records class attendance (P, A, L) and shows totals and present percentage"/>
+<attribute name="saved" value="2026-10-25 10:00:00 AM"/>
+<attribute name="created" value="U3R1ZGVudDtQQzsyMDI2LTEwLTI1OzEwOjAwOjAwIEFNOzEwMDE="/>
+<attribute name="edited" value="U3R1ZGVudDtQQzsyMDI2LTEwLTI1OzEwOjAwOjAwIEFNOzEwMDE="/>
+</attributes>
+<function name="Main" type="None" variable="">
+<parameters/>
+<body>
+<declare name="className" type="String" array="False" size=""/>
+<declare name="attDate" type="String" array="False" size=""/>
+<declare name="studentID" type="String" array="False" size=""/>
+<declare name="studentName" type="String" array="False" size=""/>
+<declare name="status" type="String" array="False" size=""/>
+<declare name="another" type="String" array="False" size=""/>
+<declare name="presentCount" type="Integer" array="False" size=""/>
+<declare name="absentCount" type="Integer" array="False" size=""/>
+<declare name="lateCount" type="Integer" array="False" size=""/>
+<declare name="totalCount" type="Integer" array="False" size=""/>
+<declare name="presentPercent" type="Real" array="False" size=""/>
+<output expression="&quot;Enter class name: &quot;" newline="True"/>
+<input variable="className"/>
+<output expression="&quot;Enter attendance date: &quot;" newline="True"/>
+<input variable="attDate"/>
+<assign variable="presentCount" expression="0"/>
+<assign variable="absentCount" expression="0"/>
+<assign variable="lateCount" expression="0"/>
+<assign variable="totalCount" expression="0"/>
+<assign variable="another" expression="&quot;yes&quot;"/>
+<while expression="another == &quot;yes&quot;"><output expression="&quot;Enter student ID: &quot;" newline="True"/><input variable="studentID"/><output expression="&quot;Enter student name: &quot;" newline="True"/><input variable="studentName"/><output expression="&quot;Enter status (P = Present, A = Absent, L = Late): &quot;" newline="True"/><input variable="status"/><while expression="status != &quot;P&quot; &amp;&amp; status != &quot;A&quot; &amp;&amp; status != &quot;L&quot;"><output expression="&quot;Invalid status. Enter P, A or L: &quot;" newline="True"/><input variable="status"/></while><if expression="status == &quot;P&quot;"><then><assign variable="presentCount" expression="presentCount + 1"/></then><else><if expression="status == &quot;A&quot;"><then><assign variable="absentCount" expression="absentCount + 1"/></then><else><assign variable="lateCount" expression="lateCount + 1"/></else></if></else></if><assign variable="totalCount" expression="totalCount + 1"/><output expression="&quot;Recorded: &quot; &amp; studentName &amp; &quot; (ID &quot; &amp; studentID &amp; &quot;) - Status: &quot; &amp; status &amp; &quot; - Class: &quot; &amp; className &amp; &quot; - Date: &quot; &amp; attDate" newline="True"/><output expression="&quot;Record another student? (yes/no): &quot;" newline="True"/><input variable="another"/></while>
+<assign variable="presentPercent" expression="presentCount / totalCount * 100"/>
+<output expression="&quot;Present: &quot; &amp; presentCount" newline="True"/>
+<output expression="&quot;Absent: &quot; &amp; absentCount" newline="True"/>
+<output expression="&quot;Late: &quot; &amp; lateCount" newline="True"/>
+<output expression="&quot;Present percentage: &quot; &amp; presentPercent &amp; &quot;%&quot;" newline="True"/>
+</body>
+</function>
+</flowgorithm>
